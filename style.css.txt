@@ -872,7 +872,7 @@ section {
     .timeline-item { width: 100%; padding-left: 45px; padding-right: 10px; }
     .timeline-item.right { left: 0; }
     .timeline-item::after { left: 10px; right: auto; }
-    .envelope-wrapper.letter-extracted .envelope-letter {
+   .envelope-wrapper.letter-extracted .envelope-letter {
         width: 90vw;
         left: calc(50% - 45vw);
         padding: 20px;
