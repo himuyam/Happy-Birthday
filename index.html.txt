@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Pranjal Panwar ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+
+    <canvas id="global-canvas"></canvas>
+
+    <div class="fireflies-container" id="fireflies"></div>
+
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <div id="loader-overlay" class="loader-overlay">
+        <div class="loader-content">
+            <p class="loader-intro-text" id="loader-text-1">Someone has something special for you...</p>
+            <div class="loader-main-title hidden" id="loader-title-group">
+                <h1 class="glow-text">🎂 Happy Birthday</h1>
+                <h2 class="gradient-text-gold">Pranjal Panwar</h2>
+                <button class="premium-btn" id="open-surprise-btn">Open Your Surprise</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-controls">
+        <button id="theme-toggle" class="control-circle-btn" title="Toggle Theme">🌓</button>
+        <button id="music-toggle" class="control-circle-btn" title="Play/Pause Music">🎵</button>
+    </div>
+
+    <audio id="bg-music" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <div id="surprise-modal" class="modal-overlay hidden">
+        <div class="glass-card modal-card animate-pop">
+            <h2 class="sparkle-title">✨ Surprise! ✨</h2>
+            <p class="modal-quote">"Today is all about your smile."</p>
+            <div class="modal-deco-elements">
+                <span class="deco-balloon">🎈</span>
+                <span class="deco-heart">❤️</span>
+                <span class="deco-balloon">🎈</span>
+            </div>
+            <button class="premium-btn close-modal-btn" id="close-modal-btn">Explore Site ✨</button>
+        </div>
+    </div>
+
+    <main class="main-wrapper">
+
+        <section class="hero-section text-center">
+            <div class="floating-quotes-container" id="quotes-ticker">
+                "Happiness looks beautiful on you."
+            </div>
+            <div class="hero-card glass-card">
+                <h1 class="main-birthday-title animate-pulse">Happy Birthday</h1>
+                <h2 class="celebrant-name gradient-text-pink">Pranjal Panwar</h2>
+                <p class="hero-subtitle">"May your smile always shine brighter than the stars."</p>
+                
+                <div class="cake-container">
+                    <div class="candle">
+                        <div class="flame"></div>
+                    </div>
+                    <div class="cake-tier tier-top"></div>
+                    <div class="cake-tier tier-bottom"></div>
+                </div>
+
+                <div class="hero-deco-row">
+                    <span class="floating-item delay-1">🎁</span>
+                    <span class="floating-item delay-2">🎈</span>
+                    <span class="floating-item delay-3">⭐</span>
+                    <span class="floating-item delay-4">🎁</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="gift-section text-center">
+            <h3 class="section-heading">A Gift For You</h3>
+            <p class="section-sub">Tap the box to uncover a hidden note</p>
+            <div class="gift-box-wrapper" id="gift-box-trigger">
+                <div class="gift-box animate-shake">
+                    <div class="gift-lid"></div>
+                    <div class="gift-ribbon"></div>
+                    <div class="gift-body"></div>
+                </div>
+            </div>
+            <div id="gift-message-box" class="glass-card gift-message hidden">
+                <p>✨ "Wishing you endless happiness, success and beautiful memories." ✨</p>
+            </div>
+        </section>
+
+        <section class="memories-section">
+            <h3 class="section-heading text-center">Blossoms of Life</h3>
+            <div class="cards-grid">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <span class="card-icon">🌸</span>
+                            <h4>Happiness</h4>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>May your days be painted with pure delight and endless radiant laughter.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <span class="card-icon">🌸</span>
+                            <h4>Dreams</h4>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>May every aspiration you hold close unfold into a beautiful reality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <span class="card-icon">🌸</span>
+                            <h4>Smiles</h4>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>Your smile makes the world brighter. Never let the spark fade.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <span class="card-icon">🌸</span>
+                            <h4>Success</h4>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>Conquer heights, achieve excellence, and build an empire of your own.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <span class="card-icon">🌸</span>
+                            <h4>Joy</h4>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>Surround yourself with warmth, love, and light that never ceases to grow.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="carousel-section text-center">
+            <div class="carousel-container glass-card">
+                <div class="carousel-slide-wrapper" id="carousel-wrapper">
+                    <div class="carousel-slide active">"May every dream come true."</div>
+                    <div class="carousel-slide">"Wishing you happiness every day."</div>
+                    <div class="carousel-slide">"Keep smiling always."</div>
+                    <div class="carousel-slide">"Stay blessed."</div>
+                    <div class="carousel-slide">"May this year be magical."</div>
+                </div>
+                <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h3 class="section-heading text-center">Your Evolution</h3>
+            <div class="timeline-container">
+                <div class="timeline-item left scroll-reveal">
+                    <div class="timeline-content glass-card">
+                        <h4>✨ Another year older</h4>
+                        <p>Stepping beautifully into a fresh chapter of life with wisdom and grace.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right scroll-reveal">
+                    <div class="timeline-content glass-card">
+                        <h4>✨ More beautiful</h4>
+                        <p>Radiating elegance from within, illuminating every space you occupy.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left scroll-reveal">
+                    <div class="timeline-content glass-card">
+                        <h4>✨ More confident</h4>
+                        <p>Embracing your strength and stepping fearlessly into your grand destiny.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right scroll-reveal">
+                    <div class="timeline-content glass-card">
+                        <h4>✨ More successful</h4>
+                        <p>Reaching landmarks effortlessly, powered by brilliant mind and dedication.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h3 class="section-heading text-center">Captured Moments</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-card image-placeholder">
+                    <div class="placeholder-overlay"><span>Moment I</span></div>
+                </div>
+                <div class="gallery-item glass-card image-placeholder">
+                    <div class="placeholder-overlay"><span>Moment II</span></div>
+                </div>
+                <div class="gallery-item glass-card image-placeholder">
+                    <div class="placeholder-overlay"><span>Moment III</span></div>
+                </div>
+                <div class="gallery-item glass-card image-placeholder">
+                    <div class="placeholder-overlay"><span>Moment IV</span></div>
+                </div>
+                <div class="gallery-item glass-card image-placeholder">
+                    <div class="placeholder-overlay"><span>Moment V</span></div>
+                </div>
+                <div class="gallery-item glass-card image-placeholder">
+                    <div class="placeholder-overlay"><span>Moment VI</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ending-section text-center">
+            <div class="closing-trigger-card glass-card scroll-reveal">
+                <h3>Thank you for visiting this little surprise.</h3>
+                <p>Click the envelope below to view your final message.</p>
+                
+                <div class="envelope-wrapper" id="envelope-interactive">
+                    <div class="envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-body"></div>
+                        <div class="envelope-letter" id="envelope-letter-card">
+                            <div class="letter-inner-content">
+                                <h5>Dear Pranjal,</h5>
+                                <p>First of all, Happy Birthday. 🎂</p>
+                                <p>I genuinely hope this new year of your life brings you happiness, peace, success, and countless beautiful memories.</p>
+                                <p>I know we don't talk like we used to, and life has taken us on different paths. Still, I wanted to make something special that might bring a small smile to your face today.</p>
+                                <p>I'm also sorry for anything I ever did that may have hurt you, knowingly or unknowingly. If I ever became the reason for any sadness, I sincerely apologize.</p>
+                                <p>Thank you for the moments we shared when I was your YouTube moderator. Those memories will always remain special to me.</p>
+                                <p>No matter where life takes us, I truly wish you nothing but happiness and success.</p>
+                                <p>Take care of yourself, keep smiling, and enjoy your special day.</p>
+                                <p class="letter-sign">— Yam ❤️</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="luxury-footer text-center">
+        <p class="footer-text">Crafted with Precision & Elegance | Happy Birthday Pranjal ✨</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

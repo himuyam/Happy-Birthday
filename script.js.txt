@@ -1,0 +1,337 @@
+﻿/**
+ * Ultra Premium Birthday Surprise Application Script Architecture
+ * Target Subject: Pranjal Panwar
+ * Engineered with Native Web Interfaces (No External Framework Overhead)
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    initApplicationEngine();
+});
+
+function initApplicationEngine() {
+    setupLoadingSequence();
+    setupCoreSurpriseInteractions();
+    setupParticleSystems();
+    setupGlobalCanvasFX();
+    setupCarouselLogic();
+    setupScrollRevealSystem();
+    setupInteractiveGift();
+    setupEnvelopeSequence();
+    setupThemeArchitecture();
+    setupMouseTrailSparkles();
+}
+
+/* --- Theme Management Architecture --- */
+function setupThemeArchitecture() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        document.body.classList.toggle('dark-theme');
+    });
+}
+
+/* --- Loading Sequence Management --- */
+function setupLoadingSequence() {
+    const text1 = document.getElementById('loader-text-1');
+    const titleGroup = document.getElementById('loader-title-group');
+    
+    // Smooth sequenced interval loading text transitions
+    setTimeout(() => {
+        text1.style.opacity = '0';
+        setTimeout(() => {
+            text1.classList.add('hidden');
+            titleGroup.classList.remove('hidden');
+            titleGroup.style.opacity = '0';
+            setTimeout(() => titleGroup.style.opacity = '1', 50);
+        }, 500);
+    }, 2500);
+}
+
+/* --- Core Reveal / Audio Activator --- */
+function setupCoreSurpriseInteractions() {
+    const openBtn = document.getElementById('open-surprise-btn');
+    const loaderOverlay = document.getElementById('loader-overlay');
+    const surpriseModal = document.getElementById('surprise-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const bgMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+
+    openBtn.addEventListener('click', () => {
+        // Audio engine initialization safely handled within standard user interaction scope
+        bgMusic.play().catch(err => console.log("Audio play deferred until next gesture. Context block protected."));
+        
+        loaderOverlay.style.opacity = '0';
+        setTimeout(() => {
+            loaderOverlay.classList.add('hidden');
+            // Present Surprise Modal Container
+            surpriseModal.classList.remove('hidden');
+            triggerConfettiExplosion();
+        }, 1000);
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        surpriseModal.style.opacity = '0';
+        setTimeout(() => {
+            surpriseModal.classList.add('hidden');
+        }, 500);
+    });
+
+    musicToggle.addEventListener('click', () => {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            musicToggle.textContent = '🎵';
+        } else {
+            bgMusic.pause();
+            musicToggle.textContent = '🔇';
+        }
+    });
+}
+
+/* --- Native CSS Particle Generators (Fireflies & Random Floating Hearts) --- */
+function setupParticleSystems() {
+    const container = document.getElementById('fireflies');
+    const fireflyCount = 35;
+
+    for (let i = 0; i < fireflyCount; i++) {
+        const firefly = document.createElement('div');
+        firefly.classList.add('firefly');
+        firefly.style.left = `${Math.random() * 100}vw`;
+        firefly.style.top = `${Math.random() * 100}vh`;
+        firefly.style.animationDelay = `${Math.random() * 10}s`;
+        firefly.style.animationDuration = `${6 + Math.random() * 8}s`;
+        container.appendChild(firefly);
+    }
+
+    // Procedural Periodic Heart Spawning System
+    setInterval(() => {
+        if(document.hidden) return;
+        const heart = document.createElement('div');
+        heart.classList.add('heart-particle');
+        heart.innerHTML = ['❤️','🌸','✨','💖'][Math.floor(Math.random() * 4)];
+        heart.style.left = `${Math.random() * 95}vw`;
+        heart.style.setProperty('--x-travel', `${-150 + Math.random() * 300}px`);
+        heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }, 450);
+
+    // Random Aesthetic Floating Quotes Ticker System
+    const quotes = [
+        "Smiles make the world brighter.",
+        "Happiness looks beautiful on you.",
+        "Keep shining.",
+        "May your day be as beautiful as you are.",
+        "Radiate pure magical energy always."
+    ];
+    const ticker = document.getElementById('quotes-ticker');
+    let quoteIndex = 0;
+    setInterval(() => {
+        ticker.style.opacity = '0';
+        setTimeout(() => {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            ticker.textContent = `"${quotes[quoteIndex]}"`;
+            ticker.style.opacity = '1';
+        }, 500);
+    }, 4000);
+}
+
+/* --- Mouse Tracking Trail Sparkles System --- */
+function setupMouseTrailSparkles() {
+    const glow = document.getElementById('cursor-glow');
+    window.addEventListener('mousemove', (e) => {
+        glow.style.left = `${e.clientX}px`;
+        glow.style.top = `${e.clientY}px`;
+
+        if(Math.random() > 0.85) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = `${e.clientX}px`;
+            sparkle.style.top = `${e.clientY}px`;
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.fontSize = '12px';
+            sparkle.style.zIndex = '2600';
+            sparkle.innerHTML = '✨';
+            sparkle.style.transition = 'all 0.6s ease';
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.style.transform = 'translateY(15px) scale(0)';
+                sparkle.style.opacity = '0';
+                setTimeout(() => sparkle.remove(), 600);
+            }, 20);
+        }
+    });
+}
+
+/* --- High Performance HTML5 Canvas FX Engine (Fireworks & Confetti arrays) --- */
+let canvas, ctx, animationParticles = [];
+
+function setupGlobalCanvasFX() {
+    canvas = document.getElementById('global-canvas');
+    ctx = canvas.getContext('2d');
+    
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Init Animation loop Execution
+    requestAnimationFrame(loopFXCanvas);
+
+    // Automation Trigger for 20-second systemic Firework Exhibitions
+    setInterval(() => {
+        if(!document.hidden) {
+            triggerFireworkShow();
+        }
+    }, 20000);
+}
+
+function loopFXCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = animationParticles.length - 1; i >= 0; i--) {
+        let p = animationParticles[i];
+        p.update();
+        p.draw();
+        if (p.alpha <= 0) {
+            animationParticles.splice(i, 1);
+        }
+    }
+    requestAnimationFrame(loopFXCanvas);
+}
+
+class CanvasParticle {
+    constructor(x, y, color, type) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.type = type; // 'confetti' || 'firework'
+        this.radius = type === 'confetti' ? Math.random() * 4 + 3 : Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * (type === 'confetti' ? 6 : 10);
+        this.vy = (Math.random() - 0.5) * (type === 'confetti' ? 6 : 10) - (type === 'confetti' ? 2 : 4);
+        this.gravity = type === 'confetti' ? 0.15 : 0.2;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.01;
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += this.gravity;
+        this.alpha -= this.decay;
+    }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+function triggerConfettiExplosion() {
+    const colors = ['#ff758c', '#ff7eb3', '#ffe082', '#7042f4', '#ffffff'];
+    for(let i=0; i<150; i++) {
+        animationParticles.push(new CanvasParticle(
+            canvas.width / 2, 
+            canvas.height / 3, 
+            colors[Math.floor(Math.random() * colors.length)], 
+            'confetti'
+        ));
+    }
+}
+
+function triggerFireworkShow() {
+    const colors = ['#ff5252', '#ff4081', '#e040fb', '#7c4dff', '#53d1ff', '#52ff94', '#fff561'];
+    const originX = Math.random() * canvas.width;
+    const originY = Math.random() * (canvas.height / 2);
+    const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    for(let i=0; i<80; i++) {
+        animationParticles.push(new CanvasParticle(originX, originY, chosenColor, 'firework'));
+    }
+}
+
+/* --- Gift Box Interactive Logic Trigger --- */
+function setupInteractiveGift() {
+    const trigger = document.getElementById('gift-box-trigger');
+    const message = document.getElementById('gift-message-box');
+    trigger.addEventListener('click', () => {
+        trigger.classList.add('opened');
+        setTimeout(() => {
+            message.classList.remove('hidden');
+        }, 400);
+    });
+}
+
+/* --- Interactive Wishes Slide Carousel Mechanism --- */
+function setupCarouselLogic() {
+    const wrapper = document.getElementById('carousel-wrapper');
+    const slides = wrapper.getElementsByClassName('carousel-slide');
+    const dotsContainer = document.getElementById('carousel-dots');
+    let currentSlide = 0;
+
+    // Build functional navigation dots dynamically
+    for (let i = 0; i < slides.length; i++) {
+        let dot = document.createElement('div');
+        dot.classList.add('dot');
+        if(i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => changeToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+
+    function changeToSlide(targetIndex) {
+        slides[currentSlide].classList.remove('active');
+        dotsContainer.children[currentSlide].classList.remove('active');
+        currentSlide = targetIndex;
+        slides[currentSlide].classList.add('active');
+        dotsContainer.children[currentSlide].classList.add('active');
+    }
+
+    setInterval(() => {
+        if(document.hidden) return;
+        let next = (currentSlide + 1) % slides.length;
+        changeToSlide(next);
+    }, 4500);
+}
+
+/* --- Document Scroll Viewport Element Detection Engine --- */
+function setupScrollRevealSystem() {
+    const items = document.querySelectorAll('.scroll-reveal');
+    const config = { threshold: 0.15 };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, config);
+
+    items.forEach(item => observer.observe(item));
+}
+
+/* --- Envelope Climax UI Unfolding Logic Sequence --- */
+function setupEnvelopeSequence() {
+    const el = document.getElementById('envelope-interactive');
+    el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if(!el.classList.contains('open')) {
+            el.classList.add('open');
+        } else if(!el.classList.contains('letter-extracted')) {
+            el.classList.add('letter-extracted');
+        }
+    });
+
+    // Handle extraction collapse safely if clicking outside bounds
+    document.addEventListener('click', () => {
+        if(el.classList.contains('letter-extracted')) {
+            el.classList.remove('letter-extracted');
+            el.classList.remove('open');
+        }
+    });
+}
+Mom
